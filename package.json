@@ -1,6 +1,6 @@
 {
   "name": "tg-torrent-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A telegram bot implementation for torrents search and download.",
   "keywords": [
     "torrent",
@@ -18,7 +18,7 @@
   },
   "main": "index.js",
   "bin" : {
-    "tg-torrent-bot-node" : "./index.js"
+    "tg-torrent-bot-node" : "node ./index.js"
   },
   "repository": {
     "type": "git",
