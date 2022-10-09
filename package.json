@@ -24,6 +24,11 @@
     "type": "git",
     "url": "https://github.com/fertkir/tg-torrent-bot-node.git"
   },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Tests missing\"",
+    "version": "echo $npm_package_version"
+  },
   "dependencies": {
     "i18n": "^0.13.4",
     "moment": "^2.29.3",
