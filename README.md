@@ -20,7 +20,7 @@ Configuration is done through environment variables.
 
 | Variable         | Description                            |
 |------------------|----------------------------------------|
-|TELEGRAM_TOKEN    |Telegram bot token (from @BotFather bot)|
+|TELEGRAM_TOKEN    |Telegram bot token (from [@BotFather](https://t.me/BotFather) bot)|
 |RUTRACKER_USERNAME|Username for rutracker.org|
 |RUTRACKER_PASSWORD|Password for rutracker.org|
 |TORRENTS_DIR      |Optional. Directory where to put downloaded .torrent files. If not set, the torrent file will be sent to chat in response.|
