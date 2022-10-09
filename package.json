@@ -1,6 +1,6 @@
 {
   "name": "tg-torrent-bot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A telegram bot implementation for torrents search and download.",
   "keywords": [
     "torrent",
@@ -16,16 +16,16 @@
     "name": "Kirill Fertikov",
     "email": "kirill.fertikov@gmail.com"
   },
-  "main": "index.js",
+  "main": "tg-torrent-bot.js",
   "bin" : {
-    "tg-torrent-bot-node" : "node ./index.js"
+    "tg-torrent-bot-node" : "./tg-torrent-bot.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/fertkir/tg-torrent-bot-node.git"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node tg-torrent-bot.js",
     "test": "echo \"Tests missing\"",
     "version": "echo $npm_package_version"
   },
