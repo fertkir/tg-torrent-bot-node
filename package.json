@@ -2,7 +2,28 @@
   "name": "tg-torrent-bot",
   "version": "1.0.0",
   "description": "A telegram bot implementation for torrents search and download.",
+  "keywords": [
+    "torrent",
+    "telegram",
+    "bot",
+    "rutracker"
+  ],
+  "bugs": {
+    "url": "https://github.com/fertkir/tg-torrent-bot-node/issues"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Kirill Fertikov",
+    "email": "kirill.fertikov@gmail.com"
+  },
   "main": "index.js",
+  "bin" : {
+    "tg-torrent-bot-node" : "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fertkir/tg-torrent-bot-node.git"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,11 +35,5 @@
     "node-telegram-bot-api": "^0.57.0",
     "prettysize": "^2.0.0",
     "rutracker-api-with-proxy": "^1.1.2"
-  },
-  "author": "Kirill Fertikov",
-  "license": "GPL-3.0-or-later",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fertkir/tg-torrent-bot.git"
   }
 }
