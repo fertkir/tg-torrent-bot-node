@@ -51,5 +51,6 @@ export CURRENT_DOWNLOADS="/home/username/current-downloads"; \
 
 #### Option 2: Set up integration with Transmission
 
-Use Ansible Role: https://galaxy.ansible.com/fertkir/tg_torrent_bot_transmission
+Use the following Ansible Role: https://galaxy.ansible.com/fertkir/tg_torrent_bot_transmission
+
 Github: https://github.com/fertkir/tg-torrent-bot-transmission
