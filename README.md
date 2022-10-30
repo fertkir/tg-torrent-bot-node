@@ -49,7 +49,7 @@ export CURRENT_DOWNLOADS="/home/username/current-downloads"; \
   tg-torrent-bot-node
 ```
 
-#### Option 2: [Set up integration with Transmission]()
+#### Option 2: Set up integration with Transmission
 
 Use Ansible Role: https://galaxy.ansible.com/fertkir/tg_torrent_bot_transmission
 Github: https://github.com/fertkir/tg-torrent-bot-transmission
