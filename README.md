@@ -7,7 +7,7 @@ Searches for torrents on supported trackers, gets magnet-links, provides/downloa
 Supported torrent-trackers:
 * rutracker.org
 
-DISCLAIMER: Please be aware that some of the materials you can get access to by means of this software might be subjects to copyright laws. Please use this software only for lawful purposes. The author of the software isn't responsible for any violations.
+DISCLAIMER: Please be aware that some materials you can get access to by means of this software might be subjects to copyright laws. Please use this software only for lawful purposes. The author of the software isn't responsible for any violations.
 
 ### Installation
 ```
@@ -42,7 +42,7 @@ export TELEGRAM_TOKEN="<telegram token>"; \
 export RUTRACKER_USERNAME="<rutracker username>"; \
 export RUTRACKER_PASSWORD="<rutracker password>"; \
 export TORRENTS_DIR="/home/username/Torrents"; \
-export RUTRACKER_HOST="http://rutracker.org"; \
+export RUTRACKER_HOST="https://rutracker.org"; \
 export PROXY_TELEGRAM="false"; \
 export PROXY_RUTRACKER="false"; \
 export CURRENT_DOWNLOADS="/home/username/current-downloads"; \

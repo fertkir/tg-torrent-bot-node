@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+require('dotenv').config();
 const fs = require('fs');
 const moment = require('moment');
 const pretty = require('prettysize');
@@ -11,13 +12,13 @@ const bot = new TelegramBot();
 
 // main logic
 bot.onText(/^[^\/]/, (msg) => {
-    var text = msg.text;
+    let text = msg.text;
     if (text.includes('#kinopoisk')) { // FIXME: doesn't work, #9
         text = text.match(/Фильм (.+)#/)[1].replace(/["(),]/g, '');
     }
     rutracker.search({query: text, sort: 'seeds', order: 'desc'})
         .then(torrents => {
-            const response = torrents.length == 0
+            const response = torrents.length === 0
             ? msg.__('No results for \"%s\".', text)
             : torrents.slice(0, 10)
                 .map(torrent => {
