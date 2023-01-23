@@ -1,6 +1,15 @@
 #!/usr/bin/env node
 
-require('dotenv').config();
+try {
+    require('dotenv').config();
+    console.log("Loaded dotenv library");
+} catch (e) {
+    if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
+        // dotenv won't be loaded in production
+    } else {
+        throw e;
+    }
+}
 const fs = require('fs');
 const moment = require('moment');
 const pretty = require('prettysize');
@@ -19,19 +28,19 @@ bot.onText(/^[^\/]/, (msg) => {
     rutracker.search({query: text, sort: 'seeds', order: 'desc'})
         .then(torrents => {
             const response = torrents.length === 0
-            ? msg.__('No results for \"%s\".', text)
-            : torrents.slice(0, 10)
-                .map(torrent => {
-                    return `${torrent.title}\n`
-                        + `${torrent.id}\n`
-                        + `[${msg.__('Description')}](${process.env.RUTRACKER_HOST}/forum/viewtopic.php?t=${torrent.id})\n`
-                        + `S ${torrent.seeds} | L ${torrent.leeches} | ${msg.__('Downloaded')} ${torrent.downloads} | `
-                        + `${msg.__('Reg')} ${moment(torrent.registered).format("YYYY-MM-DD")} | ` 
-                        + `${msg.__('Size')} ${pretty(torrent.size)}\n`
-                        + `*${process.env.TORRENTS_DIR ? msg.__('Download') : msg.__('Get .torrent file')}*: /d\\_${torrent.id}\n`
-                        + `${msg.__('Get link')}: /m\\_${torrent.id}\n`;
+                ? msg.__('No results for \"%s\".', text)
+                : torrents.slice(0, 10)
+                    .map(torrent => {
+                        return `${torrent.title}\n`
+                            + `${torrent.id}\n`
+                            + `[${msg.__('Description')}](${process.env.RUTRACKER_HOST}/forum/viewtopic.php?t=${torrent.id})\n`
+                            + `S ${torrent.seeds} | L ${torrent.leeches} | ${msg.__('Downloaded')} ${torrent.downloads} | `
+                            + `${msg.__('Reg')} ${moment(torrent.registered).format("YYYY-MM-DD")} | `
+                            + `${msg.__('Size')} ${pretty(torrent.size)}\n`
+                            + `*${process.env.TORRENTS_DIR ? msg.__('Download') : msg.__('Get .torrent file')}*: /d\\_${torrent.id}\n`
+                            + `${msg.__('Get link')}: /m\\_${torrent.id}\n`;
                     })
-                .join("\n");
+                    .join("\n");
             bot.sendMessage(msg.chat.id, response, {parse_mode: 'markdown', disable_web_page_preview: true});
         });
 });
@@ -44,9 +53,9 @@ bot.onText(/\/d_(.+)/, (msg, match) => {
         rutracker.getMagnetLink(param)
             .then(link => {
                 fs.writeFile(
-                    `${process.env.CURRENT_DOWNLOADS}/${link.match(/urn:btih:([a-z0-9]+)&/i)[1].toLowerCase()}`, 
-                    `${msg.chat.id}`, 
-                    function (err,data) {
+                    `${process.env.CURRENT_DOWNLOADS}/${link.match(/urn:btih:([a-z0-9]+)&/i)[1].toLowerCase()}`,
+                    `${msg.chat.id}`,
+                    function (err, data) {
                         if (err) {
                             return console.log(err);
                         }
@@ -70,7 +79,10 @@ bot.onText(/\/m_(.+)/, (msg, match) => {
     const param = match[1];
 
     rutracker.getMagnetLink(param)
-        .then(link => bot.sendMessage(msg.chat.id, '```\n' + link + '\n```', {parse_mode: 'markdown', disable_web_page_preview: true}));
+        .then(link => bot.sendMessage(msg.chat.id, '```\n' + link + '\n```', {
+            parse_mode: 'markdown',
+            disable_web_page_preview: true
+        }));
 });
 
 // help
