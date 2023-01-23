@@ -34,7 +34,7 @@
     "moment": "^2.29.4",
     "node-telegram-bot-api": "^0.61.0",
     "prettysize": "^2.0.0",
-    "rutracker-api-with-proxy": "^2.0.1",
+    "rutracker-api-with-proxy": "^2.0.2",
     "socks-proxy-agent": "^7.0.0"
   },
   "devDependencies": {
