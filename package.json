@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/fertkir/tg-torrent-bot-node/issues"
   },
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0-or-later",
   "author": {
     "name": "Kirill Fertikov",
     "email": "kirill.fertikov@gmail.com"
