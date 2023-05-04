@@ -37,7 +37,8 @@ Configuration is done through environment variables.
 | PROXY_PROTOCOL     | Possible values: http, https, socks5. Default value: http                                                                            |
 | PROXY_USERNAME     | Optional if nothing should be proxied, or no proxy auth is required. Proxy username.                                                 |
 | PROXY_PASSWORD     | Optional if nothing should be proxied, or no proxy auth is required. Proxy password.                                                 |
-| CURRENT_DOWNLOADS  | Required if TORRENTS_DIR is set. Directory where to put download-tracking files.                                                     |
+| DB_FILE            | Required if TORRENTS_DIR is set. JSON-database to track which user waits for which torrent to download.                              |
+| COMPLETES_WATCHDIR | Required if TORRENTS_DIR is set. Directory to receive "download complete" event-files.                                               |
 
 ### How to run
 
@@ -51,7 +52,8 @@ export TORRENTS_DIR="/home/username/Torrents"; \
 export RUTRACKER_HOST="https://rutracker.org"; \
 export PROXY_TELEGRAM="false"; \
 export PROXY_RUTRACKER="false"; \
-export CURRENT_DOWNLOADS="/home/username/current-downloads"; \
+export DB_FILE="/home/username/bot/db.json"; \
+export COMPLETES_WATCHDIR="/home/username/bot/completes-watchdir"; \
   tg-torrent-bot-node
 ```
 
