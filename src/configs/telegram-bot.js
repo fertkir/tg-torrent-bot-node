@@ -1,5 +1,5 @@
 import {SocksProxyAgent} from "socks-proxy-agent";
-import TelegramBotFacade from "../service/telegram-bot-facade.js";
+import TelegramBotFacade from "../components/telegram-bot-facade.js";
 import TelegramBot from "node-telegram-bot-api";
 import i18n from "./i18n.js";
 

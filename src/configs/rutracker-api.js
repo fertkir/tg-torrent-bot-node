@@ -1,5 +1,5 @@
 import {SocksProxyAgent} from "socks-proxy-agent";
-import RutrackerApiFacade from "../service/rutracker-api-facade.js";
+import RutrackerApiFacade from "../components/rutracker-api-facade.js";
 import RutrackerApi from "rutracker-api-with-proxy";
 
 function rutrackerApiProxyConfig() {

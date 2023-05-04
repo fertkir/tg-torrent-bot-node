@@ -24,16 +24,23 @@ export default class TelegramBotFacade {
             }
             i18n.init(msg);
             msg.setLocale(msg.from.language_code);
-            console.log(`User ${msg.from.id} sent message "${msg.text}"`);
+            console.log(`Received message "${msg.text}" from user ${msg.from.id}`);
             callback.call(null, ...arguments);
         });
     }
 
     sendMessage() {
-        return this.#bot.sendMessage(...arguments);
+        const chatId = arguments[0];
+        const message = (arguments[1] || '').substring(0, 100);
+        const promise = this.#bot.sendMessage(...arguments);
+        console.log(`Sent message "${message}" to user ${chatId}`);
+        return promise;
     }
 
     sendDocument() {
-        return this.#bot.sendDocument(...arguments);
+        const chatId = arguments[0];
+        const promise = this.#bot.sendDocument(...arguments);
+        console.log(`Sent a document to user ${chatId}`);
+        return promise;
     }
 }

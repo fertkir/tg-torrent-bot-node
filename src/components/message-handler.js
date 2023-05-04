@@ -1,6 +1,7 @@
 import moment from "moment/moment.js";
 import pretty from "prettysize";
 import fs from "fs";
+import {PendingUser} from "./downloads-tracker.js";
 
 const FORMATTED_MESSAGE_CONFIG = {
     parse_mode: 'markdown',
@@ -59,7 +60,8 @@ export default class MessageHandler {
         if (this.#torrentsDir) {
             this.#rutrackerApi.getMagnetLink(param)
                 .then(link => {
-                    this.#downloadsTracker.add(link.match(/urn:btih:([a-z0-9]+)&/i)[1].toLowerCase(), msg.chat.id);
+                    const torrentHash = link.match(/urn:btih:([a-z0-9]+)&/i)[1].toLowerCase();
+                    return this.#downloadsTracker.add(torrentHash, new PendingUser(msg.chat.id, msg.from.language_code));
                 });
         }
 
