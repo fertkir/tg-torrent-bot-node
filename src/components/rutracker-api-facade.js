@@ -1,40 +1,51 @@
-import {NotAuthorizedError} from "rutracker-api-with-proxy/lib/errors.js";
+import { NotAuthorizedError } from 'rutracker-api-with-proxy/lib/errors.js';
 
 export default class RutrackerApiFacade {
+  #rutrackerApi;
 
-    #rutrackerApi
-    #username
-    #password
+  #username;
 
-    constructor(rutrackerApi, host, username, password) {
-        this.#rutrackerApi = rutrackerApi;
-        this.host = host;
-        this.#username = username;
-        this.#password = password;
-    }
+  #password;
 
-    search({query, sort, order}) {
-        return this.#loginIfNeeded.call(this, () => this.#rutrackerApi.search({query, sort, order}));
-    }
+  constructor(rutrackerApi, host, username, password) {
+    this.#rutrackerApi = rutrackerApi;
+    this.host = host;
+    this.#username = username;
+    this.#password = password;
+  }
 
-    download(id) {
-        return this.#loginIfNeeded.call(this, () => this.#rutrackerApi.download(id));
-    }
+  search({
+    query,
+    sort,
+    order,
+  }) {
+    return this.#loginIfNeeded.call(this, () => this.#rutrackerApi.search({
+      query,
+      sort,
+      order,
+    }));
+  }
 
-    getMagnetLink(id) {
-        return this.#loginIfNeeded.call(this, () => this.#rutrackerApi.getMagnetLink(id));
-    }
+  download(id) {
+    return this.#loginIfNeeded.call(this, () => this.#rutrackerApi.download(id));
+  }
 
-    #loginIfNeeded(query) {
-        return query().catch(e => {
-            if (e instanceof NotAuthorizedError) {
-                return this.#rutrackerApi
-                    .login({
-                        username: this.#username,
-                        password: this.#password
-                    })
-                    .then(() => query());
-            }
-        });
-    }
+  getMagnetLink(id) {
+    return this.#loginIfNeeded.call(this, () => this.#rutrackerApi.getMagnetLink(id));
+  }
+
+  #loginIfNeeded(query) {
+    return query()
+      .catch((e) => {
+        if (e instanceof NotAuthorizedError) {
+          return this.#rutrackerApi
+            .login({
+              username: this.#username,
+              password: this.#password,
+            })
+            .then(() => query());
+        }
+        throw e;
+      });
+  }
 }

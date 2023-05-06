@@ -28,6 +28,7 @@
   "scripts": {
     "start": "node src/main.js",
     "test": "echo \"Tests missing\"",
+    "lint": "./node_modules/.bin/eslint .",
     "version": "echo $npm_package_version"
   },
   "dependencies": {
@@ -43,5 +44,10 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }

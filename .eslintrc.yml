@@ -1,0 +1,22 @@
+env:
+  browser: true
+  es2021: true
+extends: airbnb-base
+overrides: []
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+rules:
+  'import/extensions':
+    - warn
+    - 'js': ignorePackages # cannot remove .js extension from imports
+  'import/no-unresolved':
+    - warn
+    - 'ignore':
+      - 'lowdb'
+      - 'lowdb/node'
+  'no-console': off
+  'no-underscore-dangle':
+    - warn
+    - 'allow':
+      - '__' # due to i18n library
