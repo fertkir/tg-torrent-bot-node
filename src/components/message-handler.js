@@ -82,7 +82,10 @@ export default class MessageHandler {
           this.#bot.sendMessage(msg.chat.id, msg.__('Sent for downloading'));
           stream.pipe(fs.createWriteStream(`${this.#torrentsDir}/${param}.torrent`));
         } else {
-          this.#bot.sendDocument(msg.chat.id, stream, {}, { filename: `${param}.torrent` });
+          this.#bot.sendDocument(msg.chat.id, stream, {}, {
+            filename: `${param}.torrent`,
+            contentType: 'application/x-bittorrent',
+          });
         }
       });
   }
