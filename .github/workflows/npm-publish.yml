@@ -30,4 +30,4 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ github.actor }}/tg-torrent-bot-docker
           event-type: npm-package-published
-          client-payload: '{"version": "${{ steps.publish.outputs.version }}"'
+          client-payload: '{"version": "${{ steps.publish.outputs.version }}"}'
