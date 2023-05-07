@@ -6,6 +6,6 @@ services:
     container_name: tg-torrent-bot
     restart: unless-stopped
     environment:
-      - TELEGRAM_TOKEN=<telegram token>
-      - RUTRACKER_USERNAME=<rutracker username>
-      - RUTRACKER_PASSWORD=<rutracker password>
+      - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
+      - RUTRACKER_USERNAME=<rutracker username> # TODO: replace with your rutracker username
+      - RUTRACKER_PASSWORD=<rutracker password> # TODO: replace with your rutracker password

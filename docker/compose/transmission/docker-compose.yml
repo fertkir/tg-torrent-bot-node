@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  tg-torrent-bot:
+    image: fertkir/tg-torrent-bot:latest
+    container_name: tg-torrent-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
+      - RUTRACKER_USERNAME=<rutracker username> # TODO: replace with your rutracker username
+      - RUTRACKER_PASSWORD=<rutracker password> # TODO: replace with your rutracker password
+      - TORRENTS_DIR=/torrents
+      - COMPLETES_WATCHDIR=/completes
+    volumes:
+      - torrents:/torrents
+      - completes:/completes
+  transmission:
+    image: linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /home/fertkir/Downloads:/downloads
+      - torrents:/watch
+      - completes:/completes
+    ports:
+      - "9091:9091"
+      - "51413:51413"
+      - "51413:51413/udp"
+    restart: unless-stopped
+volumes:
+  torrents:
+  completes:
