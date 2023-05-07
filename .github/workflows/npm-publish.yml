@@ -6,12 +6,19 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+#      - uses: actions/checkout@v3
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: 18
+#      - run: npm install
+#      - run: npm test
+#      - uses: JS-DevTools/npm-publish@v1
+#        with:
+#          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
         with:
-          node-version: 18
-      - run: npm install
-      - run: npm test
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: ${{ github.actor }}/tg-torrent-bot-docker
+          event-type: npm-package-published
