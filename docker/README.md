@@ -26,6 +26,12 @@ services:
       - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
       - RUTRACKER_USERNAME=<rutracker username> # TODO: replace with your rutracker username
       - RUTRACKER_PASSWORD=<rutracker password> # TODO: replace with your rutracker password
+# If HTTP-proxy is required:
+#      - PROXY_TELEGRAM=false
+#      - PROXY_RUTRACKER=true
+#      - PROXY_HOST=your-http-proxy.com # TODO: replace
+#      - PROXY_PORT=8080 # TODO: replace
+#      - PROXY_PROTOCOL=http
 
 ```
 
