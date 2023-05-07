@@ -4,7 +4,7 @@
 ## Installation
 1. Create a telegram token using [@BotFather](https://t.me/BotFather).
 2. [Select your desired setup](#setups).
-3. Fill credentials and adjust other settings, if needed.
+3. Fill in your credentials and [adjust other settings, if needed](https://github.com/fertkir/tg-torrent-bot-node#configuration).
 4. `docker compose up`
 
 <h2 id="setups">Setups</h3>
