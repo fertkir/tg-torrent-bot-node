@@ -4,7 +4,7 @@
 1. Create a telegram token using [@BotFather](https://t.me/BotFather).
 2. [Select your desired setup](#setups).
 3. Fill credentials and adjust other settings, if needed.
-4. `docker-compose up -d`
+4. `docker compose up -d`
 
 <h2 id="setups">Setups</h3>
 
