@@ -5,11 +5,8 @@ on:
       dry-run-publish:
         description: 'Dry-run publish to npmjs'
         required: true
-        default: 'false'
-        type: choice
-        options:
-          - true
-          - false
+        default: false
+        type: boolean
 
 jobs:
   publish:
