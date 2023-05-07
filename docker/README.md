@@ -6,7 +6,8 @@
 3. Fill credentials and adjust other settings, if needed.
 4. `docker-compose up -d`
 
-## Setups
+<h2 id="setups">Setups</h3>
+
 ### Standalone bot
 In this setup it will send you magnet links or .torrent files right into chat.
 This can be run, for instance, in a VPS.
