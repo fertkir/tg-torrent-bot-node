@@ -78,3 +78,49 @@ volumes:
   completes:
 
 ```
+
+### Through [Shadowsocks](https://github.com/shadowsocks/shadowsocks-rust)
+If you cannot connect to Telegram or Rutracker directly, you can do it through your Shadowsocks server:
+```yaml
+# compose/shadowsocks/docker-compose.yml
+
+version: "3"
+
+services:
+  tg-torrent-bot:
+    image: fertkir/tg-torrent-bot:latest
+    container_name: tg-torrent-bot
+    restart: unless-stopped
+    networks:
+      - tg-torrent-net
+    environment:
+      - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
+      - RUTRACKER_USERNAME=<rutracker username> # TODO: replace with your rutracker username
+      - RUTRACKER_PASSWORD=<rutracker password> # TODO: replace with your rutracker password
+      - PROXY_TELEGRAM=false
+      - PROXY_RUTRACKER=true
+      - PROXY_HOST=shadowsocks
+      - PROXY_PORT=34567
+      - PROXY_PROTOCOL=socks5
+  shadowsocks:
+    image: ghcr.io/shadowsocks/sslocal-rust:latest
+    container_name: shadowsocks-local
+    restart: unless-stopped
+    networks:
+      - tg-torrent-net
+    volumes:
+      - /path/to/your/shadowsocks/config.json:/etc/shadowsocks-rust/config.json
+networks:
+  tg-torrent-net:
+    external: false
+
+```
+Shadowsocks config should like something like:
+```json
+{
+  ...
+  "local_address": "0.0.0.0",
+  "local_port": 34567
+}
+
+```
