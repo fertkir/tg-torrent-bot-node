@@ -33,3 +33,10 @@ jobs:
           push: true
           build-args: VERSION=${{ inputs.version }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot:latest
+      -
+        name: Update repo description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ github.repository }}
