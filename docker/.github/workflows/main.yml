@@ -7,6 +7,8 @@ on:
         description: 'NPM package version to use in the docker image'
         required: true
         type: string
+  repository_dispatch:
+    types: [npm-package-published]
 
 jobs:
   build:
@@ -31,7 +33,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          build-args: VERSION=${{ inputs.version }}
+          build-args: VERSION=${{ inputs.version || github.event.client_payload.version }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot:latest
       -
         name: Update repo description
