@@ -2,10 +2,10 @@ name: Publish Package to npmjs
 on:
   workflow_dispatch:
     inputs:
-      dry-run-publish:
-        description: 'Dry-run publish to npmjs'
+      publish:
+        description: 'Publish to npmjs'
         required: true
-        default: false
+        default: true
         type: boolean
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          dry-run: ${{ inputs.dry-run-publish }}
+          dry-run: ${{ ! inputs.publish }}
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
