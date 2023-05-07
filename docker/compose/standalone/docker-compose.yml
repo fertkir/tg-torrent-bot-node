@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  tg-torrent-bot:
+    image: tg-torrent-bot:latest
+    container_name: tg-torrent-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_TOKEN=<telegram token>
+      - RUTRACKER_USERNAME=<rutracker username>
+      - RUTRACKER_PASSWORD=<rutracker password>
