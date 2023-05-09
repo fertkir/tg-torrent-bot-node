@@ -1,15 +1,11 @@
-name: ci
-
+name: Docker publish
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       version:
         description: 'NPM package version to use in the docker image'
         required: true
         type: string
-  repository_dispatch:
-    types: [npm-package-published]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ./docker/Dockerfile
           push: true
           build-args: VERSION=${{ inputs.version || github.event.client_payload.version }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot:latest
@@ -42,3 +38,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot
+          readme-filepath: ./docker/README.md

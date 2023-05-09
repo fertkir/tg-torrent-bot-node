@@ -1,4 +1,4 @@
-name: Publish Package to npmjs
+name: NPM publish
 on:
   workflow_dispatch:
     inputs:
@@ -7,7 +7,6 @@ on:
         required: true
         default: true
         type: boolean
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -23,11 +22,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           dry-run: ${{ ! inputs.publish }}
-
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          repository: ${{ github.actor }}/tg-torrent-bot-docker
-          event-type: npm-package-published
-          client-payload: '{"version": "${{ steps.publish.outputs.version }}"}'
+  docker-build:
+    uses: ./.github/workflows/docker-publish.yml
+    with:
+      version: ${{ steps.publish.outputs.version }}
