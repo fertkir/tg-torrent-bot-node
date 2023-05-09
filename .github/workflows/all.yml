@@ -12,7 +12,9 @@ jobs:
     uses: ./.github/workflows/npm-build.yml
     with:
       publish: ${{ inputs.publish }}
+    secrets: inherit
   docker-build:
     uses: ./.github/workflows/docker-build.yml
     with:
       version: ${{ needs.npm-build.version }}
+    secrets: inherit
