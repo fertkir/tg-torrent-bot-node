@@ -22,7 +22,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - /home/fertkir/Downloads:/downloads
+      - /home/username/Downloads:/downloads # TODO: replace with your downloads directory
       - torrents:/watch
       - completes:/completes
     ports:
