@@ -1,0 +1,98 @@
+---
+- name: Installing transmission
+  ansible.builtin.package:
+    name:
+      - "{{ transmission_package }}"
+    state: present
+
+- name: Start/stop transmission-daemon to generate settings.json if it's missing
+  block:
+    - name: Start transmission-daemon
+      ansible.builtin.systemd:
+        name: transmission-daemon
+        state: started
+
+    - name: Stop transmission-daemon
+      ansible.builtin.systemd:
+        name: transmission-daemon
+        state: stopped
+
+- name: Read settings.json contents
+  ansible.builtin.slurp:
+    src: "{{ transmission_settings_json }}"
+  register: slurped
+
+- name: Save settings.json contents to a variable
+  ansible.builtin.set_fact:
+    json_contents: "{{ slurped.content | b64decode | from_json }}"
+
+- name: Read downloads directory path
+  ansible.builtin.set_fact:
+    transmission_downloads_dir: "{{ json_contents['download-dir'] }}"
+
+- name: Generate torrents directory path
+  ansible.builtin.set_fact:
+    transmission_torrents_dir: "{{ transmission_downloads_dir | regex_replace('([^\/]+$)', 'Torrents') }}"
+
+- name: Merge json with replacement values
+  ansible.builtin.set_fact:
+    json_contents: "{{ json_contents | combine(json_update, recursive=True) }}"
+  vars:
+    json_update: >
+      {
+        'script-torrent-done-enabled': true,
+        'script-torrent-done-filename': '/usr/local/bin/tg-torrent-bot',
+        'umask': 2,
+        'watch-dir': '{{ transmission_torrents_dir }}',
+        'watch-dir-enabled': true
+      }
+
+- name: Merge json with user settings
+  ansible.builtin.set_fact:
+    json_contents: "{{ json_contents | combine(transmission_settings, recursive=True) }}"
+
+- name: Write updated settings.json
+  ansible.builtin.copy:
+    content: "{{ json_contents | to_nice_json(indent=2) }}"
+    dest: "{{ transmission_settings_json }}"
+
+- name: Create downloads and torrents directories if missing
+  ansible.builtin.file:
+    path: "{{ item }}"
+    owner: "{{ transmission_user }}"
+    group: "{{ transmission_group }}"
+    state: directory
+    mode: 0775
+  with_items:
+    - "{{ transmission_downloads_dir }}"
+    - "{{ transmission_torrents_dir }}"
+
+- name: Add current user and tg-torrent-bot to transmission group to be able to access files created by transmission
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: "{{ transmission_group }}"
+    append: true
+  with_items:
+    - "{{ target_user }}"
+    - tg-torrent-bot
+
+- name: Save symlinks folder name to variable
+  ansible.builtin.set_fact:
+    symlinks_folder: "{{ target_home }}/transmission/"
+
+- name: Create symlinks folder if missing
+  ansible.builtin.file:
+    path: "{{ symlinks_folder }}"
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    state: directory
+
+- name: Create symbolic links to downloads and torrents directories
+  become_user: "{{ target_user }}"
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ item | regex_replace('^(.*[\/])', symlinks_folder) }}"
+    state: link
+  with_items:
+    - "{{ transmission_downloads_dir }}"
+    - "{{ transmission_torrents_dir }}"

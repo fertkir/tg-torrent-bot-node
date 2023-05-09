@@ -1,0 +1,25 @@
+---
+# telegram_token: ""
+
+rutracker_host: https://rutracker.org
+# rutracker_username: ""
+# rutracker_password: ""
+
+# Comma-separated values of Telegram user IDs who are allowed to use the bot
+allowed_users: ""
+
+# Should the bot use proxy to access Telegram servers?
+proxy_telegram: false
+
+# Should the bot use proxy to access rutracker.org?
+proxy_rutracker: false
+
+# Other proxy settings
+proxy_protocol: http
+proxy_host: 127.0.0.1
+proxy_port: 8080
+proxy_username: ""
+proxy_password: ""
+
+# Transmission settings to update settings.json with
+transmission_settings: {}

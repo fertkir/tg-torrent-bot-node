@@ -1,0 +1,5 @@
+---
+transmission_package: transmission-daemon
+transmission_user: transmission
+transmission_group: transmission
+transmission_settings_json: /var/lib/transmission/.config/transmission-daemon/settings.json

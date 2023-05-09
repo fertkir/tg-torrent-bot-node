@@ -1,0 +1,25 @@
+galaxy_info:
+  role_name: tg_torrent_bot_transmission
+  namespace: fertkir
+  author: Kirill Fertikov
+  description: Telegram Torrent Bot integrated with Transmission bittorrent client
+  license: GPL-3.0-or-later
+  min_ansible_version: '2.10'
+
+  platforms:
+    - name: Fedora
+      versions:
+        - '36'
+        - '37'
+    - name: Ubuntu
+      versions:
+        - 'jammy'
+
+  galaxy_tags:
+    - telegram
+    - bot
+    - torrent
+    - rutracker
+    - transmission
+
+dependencies: []
