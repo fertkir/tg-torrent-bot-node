@@ -1,5 +1,11 @@
 name: Docker publish
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'NPM package version to use in the docker image'
+        required: true
+        type: string
   workflow_call:
     inputs:
       version:
