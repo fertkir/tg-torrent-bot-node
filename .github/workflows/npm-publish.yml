@@ -22,7 +22,9 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           dry-run: ${{ ! inputs.publish }}
+    outputs:
+      version: ${{ steps.publish.outputs.version }}
   docker-build:
     uses: ./.github/workflows/docker-publish.yml
     with:
-      version: ${{ steps.publish.outputs.version }}
+      version: ${{ needs.publish.version }}
