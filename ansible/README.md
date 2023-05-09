@@ -49,4 +49,4 @@ Fill in your telegram bot token (get it from [@BotFather](https://t.me/BotFather
 
 ## License
 
-This project is licensed under GNU General Public License v3.0. See [LICENSE](/LICENSE) for more details.
+This project is licensed under GNU Affero General Public License v3. See [LICENSE](https://github.com/fertkir/tg-torrent-bot-node/LICENSE) for more details.
