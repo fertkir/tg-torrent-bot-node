@@ -1,0 +1,18 @@
+namespace: fertkir
+name: tg_torrent_bot
+version: 1.0.0
+readme: README.md
+authors:
+- Kirill Fertikov <kirill.fertikov@gmail.com>
+description: Collection of roles for Telegram Torrent Bot
+license:
+- GPL-3.0-or-later
+
+# A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
+# requirements as 'namespace' and 'name'
+tags: []
+
+repository: https://github.com/fertkir/tg-torrent-bot-node
+documentation: https://github.com/fertkir/tg-torrent-bot-node
+homepage: https://github.com/fertkir/tg-torrent-bot-node
+issues: https://github.com/fertkir/tg-torrent-bot-node/issues
