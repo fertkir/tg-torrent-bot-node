@@ -1,5 +1,8 @@
 # Telegram Torrent Bot in Docker
-[![GitHub](https://img.shields.io/static/v1.svg?label=tg-torrent-bot-node&message=GitHub&logo=github)](https://github.com/fertkir/tg-torrent-bot-node "view the source code")
+[![GitHub](https://img.shields.io/github/issues/fertkir/tg-torrent-bot-node?logo=github)](https://github.com/fertkir/tg-torrent-bot-node "view the source code")
+[![NpmJs](https://img.shields.io/npm/v/tg-torrent-bot?logo=npm)](https://www.npmjs.com/package/tg-torrent-bot "npm package")
+[![Ansible Galaxy](https://img.shields.io/static/v1.svg?label=collection&message=fertkir.tg_torrent_bot&logo=ansible&color=blue)](https://galaxy.ansible.com/fertkir/tg_torrent_bot "Ansible Galaxy collection")
+[![DockerHub](https://img.shields.io/docker/v/fertkir/tg-torrent-bot?logo=docker)](https://hub.docker.com/r/fertkir/tg-torrent-bot "view on DockerHub")
 
 ## Installation
 1. Create a telegram token using [@BotFather](https://t.me/BotFather).
