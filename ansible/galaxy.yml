@@ -1,6 +1,6 @@
 namespace: fertkir
 name: tg_torrent_bot
-version: 1.0.0
+version: 1.0.1
 readme: README.md
 authors:
 - Kirill Fertikov <kirill.fertikov@gmail.com>
