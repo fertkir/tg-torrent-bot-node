@@ -1,17 +1,15 @@
 # Collections for Telegram Torrent Bot
 
 Contains the following roles:
-- [Integration with Transmission](https://github.com/fertkir/tg-torrent-bot-node/tree/main/ansible/roles/transmission)
+* [Integration with Transmission](https://github.com/fertkir/tg-torrent-bot-node/tree/main/ansible/roles/transmission)
 
 Example
 ----------------
-### Install the collection:
+Install the collection:
 
 ```bash
 ansible-galaxy collection install fertkir.tg_torrent_bot
 ```
-
-### Playbook example
 
 Fill in your telegram bot token (get it from [@BotFather](https://t.me/BotFather) telegram bot) and credentials for rutracker.org.
 
