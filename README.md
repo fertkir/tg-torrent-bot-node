@@ -1,4 +1,5 @@
-# Node.js Telegram Torrent Bot
+# Telegram Torrent Bot
+[![GitHub](https://img.shields.io/static/v1.svg?label=tg-torrent-bot-node&message=GitHub&logo=github)](https://github.com/fertkir/tg-torrent-bot-node "view the source code")
 
 A telegram bot implementation for torrents search and download.
 

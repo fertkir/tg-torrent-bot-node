@@ -1,4 +1,4 @@
-Ansible Role: tg_torrent_bot_transmission
+Ansible Role: fertkir.tg_torrent_bot.transmission
 =========
 
 Integrates [Telegram Torrent Bot](https://www.npmjs.com/package/tg-torrent-bot) with [Transmission bittorrent client](https://transmissionbt.com/).

@@ -13,6 +13,6 @@ license:
 tags: []
 
 repository: https://github.com/fertkir/tg-torrent-bot-node
-documentation: https://github.com/fertkir/tg-torrent-bot-node
+documentation: https://github.com/fertkir/tg-torrent-bot-node/blob/main/ansible/README.md
 homepage: https://github.com/fertkir/tg-torrent-bot-node
 issues: https://github.com/fertkir/tg-torrent-bot-node/issues
