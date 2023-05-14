@@ -33,12 +33,3 @@
 
     - name: Set up tg-torrent-bot
       ansible.builtin.import_tasks: tg-torrent-bot.yml
-
-    - name: Starting services
-      ansible.builtin.systemd:
-        name: "{{ item }}"
-        state: started
-        enabled: true
-      with_items:
-        - transmission-daemon
-        - tg-torrent-bot

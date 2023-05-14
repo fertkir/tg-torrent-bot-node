@@ -1,2 +1,16 @@
 ---
-# handlers file for tg-torrent-bot-ansible-role
+- name: systemd daemon-reload
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: tg-torrent-bot restart
+  ansible.builtin.service:
+    name: tg-torrent-bot
+    state: restarted
+    enabled: true
+
+- name: transmission-daemon restart
+  ansible.builtin.service:
+    name: transmission-daemon
+    state: restarted
+    enabled: true

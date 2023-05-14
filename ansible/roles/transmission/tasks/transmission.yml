@@ -55,6 +55,7 @@
   ansible.builtin.copy:
     content: "{{ json_contents | to_nice_json(indent=2) }}"
     dest: "{{ transmission_settings_json }}"
+  notify: transmission-daemon restart
 
 - name: Create downloads and torrents directories if missing
   ansible.builtin.file:
