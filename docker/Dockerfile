@@ -5,11 +5,9 @@ LABEL build_version="tg-torrent-bot@${VERSION}"
 
 RUN npm install -g tg-torrent-bot@$VERSION
 
-ENV PUID=0
-ENV PGID=0
-USER "$PUID:$PGID"
+RUN mkdir -p /db && chmod -R 777 /db
 
-ENV DB_FILE=/db.json
+ENV DB_FILE=/db/db.json
 ENV RUTRACKER_HOST=https://rutracker.org
 
 ENTRYPOINT ["tg-torrent-bot-node"]
