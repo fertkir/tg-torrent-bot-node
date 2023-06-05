@@ -1,17 +1,6 @@
-name: Docker publish
+name: Transmission plugin docker publish
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'NPM package version to use in the docker image'
-        required: true
-        type: string
-  workflow_call:
-    inputs:
-      version:
-        description: 'NPM package version to use in the docker image'
-        required: true
-        type: string
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,15 +22,14 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./docker/tg-torrent-bot/Dockerfile
+          file: ./docker/transmission/Dockerfile
           push: true
-          build-args: VERSION=${{ inputs.version || github.event.client_payload.version }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/transmission-tg-torrent-bot:latest
       -
         name: Update repo description
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot
-          readme-filepath: ./docker/tg-torrent-bot/README.md
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/transmission-tg-torrent-bot
+          readme-filepath: ./docker/transmission/README.md
