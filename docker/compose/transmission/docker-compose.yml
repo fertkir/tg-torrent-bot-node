@@ -2,9 +2,10 @@ version: "3"
 
 services:
   tg-torrent-bot:
-    image: fertkir/tg-torrent-bot:latest
+    image: tg-torrent-bot:latest
     container_name: tg-torrent-bot
     restart: unless-stopped
+    user: "1000:1000" # TODO replace without your user and group ids
     environment:
       - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
       - RUTRACKER_USERNAME=<rutracker username> # TODO: replace with your rutracker username
@@ -12,24 +13,26 @@ services:
       - TORRENTS_DIR=/torrents
       - COMPLETES_WATCHDIR=/completes
     volumes:
-      - torrents:/torrents
+      - /home/username/Torrents:/torrents # TODO: replace with your .torrent files directory
       - completes:/completes
   transmission:
     image: linuxserver/transmission:latest
     container_name: transmission
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1000  # TODO replace without your user id
+      - PGID=1000  # TODO replace without your group id
       - TZ=Etc/UTC
+      - DOCKER_MODS=fertkir/transmission-tg-torrent-bot:latest
     volumes:
-      - /home/username/Downloads:/downloads # TODO: replace with your downloads directory
-      - torrents:/watch
+      - transmission-config:/config
       - completes:/completes
+      - /home/username/Downloads:/downloads # TODO: replace with your downloads directory
+      - /home/username/Torrents:/watch # TODO: replace with your .torrent files directory
     ports:
       - "9091:9091"
       - "51413:51413"
       - "51413:51413/udp"
     restart: unless-stopped
 volumes:
-  torrents:
   completes:
+  transmission-config:
