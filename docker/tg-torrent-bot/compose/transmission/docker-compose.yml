@@ -2,7 +2,7 @@ version: "3"
 
 services:
   tg-torrent-bot:
-    image: tg-torrent-bot:latest
+    image: fertkir/tg-torrent-bot:latest
     container_name: tg-torrent-bot
     restart: unless-stopped
     user: "1000:1000" # TODO replace without your user and group ids
