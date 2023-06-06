@@ -1,7 +1,7 @@
 FROM node:18-alpine
 
 ARG VERSION="latest"
-# fixme build_version looks this way: tg-torrent-bot@
+
 LABEL build_version="tg-torrent-bot@${VERSION}"
 
 RUN npm install -g tg-torrent-bot@$VERSION
