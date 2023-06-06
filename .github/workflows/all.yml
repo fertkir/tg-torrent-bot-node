@@ -13,12 +13,11 @@ jobs:
       - run: npm install
       - run: npm test
       - uses: JS-DevTools/npm-publish@v2
+        id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
-      - uses: Saionaro/extract-package-version@v1.2.1
-        id: extract_version
     outputs:
-      version: ${{ steps.extract_version.outputs.version }}
+      version: ${{ steps.publish.outputs.version }}
 
   docker:
     needs: npm
@@ -43,7 +42,7 @@ jobs:
           context: .
           file: ./docker/tg-torrent-bot/Dockerfile
           push: true
-          build-args: VERSION=${{ needs.npm.version }}
+          build-args: VERSION=${{ needs.npm.outputs.version }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot:latest
       -
         name: Update repo description
