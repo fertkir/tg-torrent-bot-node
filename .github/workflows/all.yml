@@ -13,11 +13,12 @@ jobs:
       - run: npm install
       - run: npm test
       - uses: JS-DevTools/npm-publish@v2
-        id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
+      - uses: Saionaro/extract-package-version@v1.2.1
+        id: extract_version
     outputs:
-      version: ${{ steps.publish.outputs.version }}
+      version: ${{ steps.extract_version.outputs.version }}
 
   docker:
     needs: npm
