@@ -8,6 +8,12 @@ on:
         default: true
         type: boolean
   workflow_call:
+    inputs:
+      publish:
+        description: 'Publish to npmjs'
+        required: true
+        default: true
+        type: boolean
 jobs:
   publish:
     runs-on: ubuntu-latest

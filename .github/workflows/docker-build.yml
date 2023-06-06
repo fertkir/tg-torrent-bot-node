@@ -7,6 +7,11 @@ on:
         required: true
         type: string
   workflow_call:
+    inputs:
+      version:
+        description: 'NPM package version to use in the docker image'
+        required: true
+        type: string
 jobs:
   build:
     runs-on: ubuntu-latest
