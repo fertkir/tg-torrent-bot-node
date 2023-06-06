@@ -1,12 +1,7 @@
 name: Build all
 on:
   workflow_dispatch:
-    inputs:
-      publish:
-        description: 'Publish to npmjs'
-        required: true
-        default: true
-        type: boolean
+
 jobs:
   npm:
     runs-on: ubuntu-latest
@@ -17,11 +12,10 @@ jobs:
           node-version: 18
       - run: npm install
       - run: npm test
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v2
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          dry-run: ${{ ! inputs.publish }}
     outputs:
       version: ${{ steps.publish.outputs.version }}
 
