@@ -18,6 +18,3 @@ jobs:
     with:
       version: ${{ needs.npm-build.version }}
     secrets: inherit
-  ansible-publish:
-    uses: ./.github/workflows/ansible-publish.yml
-    secrets: inherit
