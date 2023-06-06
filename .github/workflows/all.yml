@@ -48,7 +48,7 @@ jobs:
           context: .
           file: ./docker/tg-torrent-bot/Dockerfile
           push: true
-          build-args: VERSION=${{ needs.npm-build.version }}
+          build-args: VERSION=${{ needs.npm.version }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tg-torrent-bot:latest
       -
         name: Update repo description
