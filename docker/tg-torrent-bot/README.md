@@ -49,7 +49,7 @@ services:
   tg-torrent-bot:
     image: fertkir/tg-torrent-bot:latest
     restart: unless-stopped
-    user: "1000:1000" # TODO replace without your user and group ids
+    user: "1000:1000" # TODO replace with your user and group ids
     environment:
       - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
       - RUTRACKER_USERNAME=<rutracker username> # TODO: replace with your rutracker username
@@ -62,8 +62,8 @@ services:
   transmission:
     image: linuxserver/transmission:latest
     environment:
-      - PUID=1000  # TODO replace without your user id
-      - PGID=1000  # TODO replace without your group id
+      - PUID=1000  # TODO replace with your user id
+      - PGID=1000  # TODO replace with your group id
       - TZ=Etc/UTC
       - DOCKER_MODS=fertkir/transmission-tg-torrent-bot:latest
     volumes:
