@@ -3,7 +3,6 @@ version: "3"
 services:
   tg-torrent-bot:
     image: fertkir/tg-torrent-bot:latest
-    container_name: tg-torrent-bot
     restart: unless-stopped
     environment:
       - TELEGRAM_TOKEN=<telegram token> # TODO: replace with your telegram token
@@ -15,9 +14,8 @@ services:
       - PROXY_PORT=34567
       - PROXY_PROTOCOL=socks5
 
-  shadowsocks:
+  sslocal:
     image: ghcr.io/shadowsocks/sslocal-rust:latest
-    container_name: shadowsocks-local
     restart: unless-stopped
     volumes:
       - /path/to/your/shadowsocks/config.json:/etc/shadowsocks-rust/config.json

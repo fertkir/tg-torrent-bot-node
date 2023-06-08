@@ -3,7 +3,6 @@ version: "3"
 services:
   tg-torrent-bot:
     image: fertkir/tg-torrent-bot:latest
-    container_name: tg-torrent-bot
     restart: unless-stopped
     user: "1000:1000" # TODO replace without your user and group ids
     environment:
@@ -17,7 +16,6 @@ services:
       - completes:/completes
   transmission:
     image: linuxserver/transmission:latest
-    container_name: transmission
     environment:
       - PUID=1000  # TODO replace without your user id
       - PGID=1000  # TODO replace without your group id
