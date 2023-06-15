@@ -40,6 +40,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          platforms: linux/amd64,linux/arm64
           file: ./docker/tg-torrent-bot/Dockerfile
           push: true
           build-args: VERSION=${{ needs.npm.outputs.version }}
