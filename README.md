@@ -29,6 +29,8 @@ Configuration is done through environment variables.
 | Variable           | Description                                                                                                                          |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | TELEGRAM_TOKEN     | Telegram bot token (from [@BotFather](https://t.me/BotFather) bot)                                                                   |
+| WEBHOOK_URL        | Optional if polling interaction is okay for you. Example: https://<app-name>.herokuapp.com:443                                       |
+| WEBHOOK_PORT       | Optional if polling interaction is okay for you. Port on which the bot will be listening for requests from Telegram.                 |
 | RUTRACKER_USERNAME | Username for rutracker.org                                                                                                           |
 | RUTRACKER_PASSWORD | Password for rutracker.org                                                                                                           |
 | TORRENTS_DIR       | Optional. Directory where to put downloaded .torrent files. If not set, the torrent file will be sent to chat in response.           |

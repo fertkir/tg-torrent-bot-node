@@ -30,11 +30,23 @@ function telegramBotProxyConfig() {
   return {};
 }
 
-const telegramBot = new TelegramBotFacade(new TelegramBot(process.env.TELEGRAM_TOKEN, {
-  polling: true,
+const useWebhook = typeof process.env.WEBHOOK_PORT !== "undefined"
+  && typeof process.env.WEBHOOK_URL !== "undefined";
+
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {
+  polling: !useWebhook,
+  webHook: !useWebhook ? false : {
+    port: process.env.WEBHOOK_PORT
+  },
   request: {
     ...telegramBotProxyConfig(),
   },
-}), i18n);
+});
+
+if (useWebhook) {
+  bot.setWebHook(`${process.env.WEBHOOK_URL}/bot${process.env.TELEGRAM_TOKEN}`)
+}
+
+const telegramBot = new TelegramBotFacade(bot, i18n);
 
 export default telegramBot;
