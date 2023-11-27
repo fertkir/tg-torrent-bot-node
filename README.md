@@ -4,6 +4,8 @@
 [![Ansible Galaxy](https://img.shields.io/static/v1.svg?label=collection&message=fertkir.tg_torrent_bot&logo=ansible&color=blue)](https://galaxy.ansible.com/fertkir/tg_torrent_bot "Ansible Galaxy collection")
 [![DockerHub](https://img.shields.io/docker/v/fertkir/tg-torrent-bot?logo=docker)](https://hub.docker.com/r/fertkir/tg-torrent-bot "view on DockerHub")
 
+**Maintenance discontinued in favor of https://github.com/fertkir/prowlarr-telegram-client**
+
 A telegram bot implementation for torrents search and download.
 
 Searches for torrents on supported trackers, gets magnet-links, provides/downloads .torrent files.
